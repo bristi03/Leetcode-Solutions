@@ -6,13 +6,10 @@ class Solution {
             char[] arr = word.toCharArray();
             Arrays.sort(arr);
             String sorted = new String(arr);
-            if(map.containsKey(sorted)){
-                map.get(sorted).add(word);
-            }
-            else{
+            if(!map.containsKey(sorted)){
                 map.put(sorted, new ArrayList<>());
-                map.get(sorted).add(word);
             }
+            map.get(sorted).add(word);
         }
         return new ArrayList<>(map.values());
     }
