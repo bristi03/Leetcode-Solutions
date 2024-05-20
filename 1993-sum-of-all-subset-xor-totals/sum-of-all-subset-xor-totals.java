@@ -5,9 +5,13 @@ class Solution {
     }
     int xorSum = 0;
     void subsetRec(int[] nums, int index, int sum){
-        xorSum += sum;
-        for(int i=index; i< nums.length; i++){
-            subsetRec(nums, i+1, sum^nums[i]);
+        if(index == nums.length){
+            xorSum += sum;
+            return;
         }
+        // Recursive call including the current element
+        subsetRec(nums, index+1, sum ^ nums[index]);
+        // Recursive call excluding the current element
+        subsetRec(nums, index+1, sum);   
     }
 }
