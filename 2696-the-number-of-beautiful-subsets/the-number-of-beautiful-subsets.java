@@ -1,35 +1,28 @@
-import java.util.*;
-
 class Solution {
     public int beautifulSubsets(int[] nums, int k) {
-        // Start the recursion with an empty list and initial count adjusted by subtracting 1 to exclude the empty subset
-        return subsetRec(nums, 0, k, new ArrayList<>()) - 1;
+        Arrays.sort(nums); // Sort the array to handle duplicates easily
+        int maxVal = nums[nums.length - 1];
+        int[] cnt = new int[maxVal + 1]; // Create a count array based on the max value in nums
+        return backtrack(nums, k, 0, cnt) - 1; // Start backtracking from index 0, subtract 1 to exclude the empty subset
     }
 
-    private int subsetRec(int[] arr, int start, int k, List<Integer> curr) {
-        int count = 1; // Start with 1 to count the current (potentially valid) subset
+    private int backtrack(int[] nums, int k, int start, int[] cnt) {
+        int count = 1; // Start with 1 to include the current subset
 
-        for (int i = start; i < arr.length; i++) {
-            // Check if adding arr[i] will make the subset invalid
-            if (isValid(curr, k, arr[i])) {
-                // Add the current element to the subset
-                curr.add(arr[i]);
-                // Count the current subset as valid and recurse further
-                count += subsetRec(arr, i + 1, k, curr);
-                // Backtrack by removing the current element from the subset
-                curr.remove(curr.size() - 1);
+        for (int i = start; i < nums.length; i++) {
+            if (nums[i] - k >= 0 && cnt[nums[i] - k] > 0) {
+                continue; // Skip if adding nums[i] violates the beautiful subset constraint
             }
+
+            // Add nums[i] to the current subset
+            cnt[nums[i]]++;
+            // Count the current subset and recurse further
+            count += backtrack(nums, k, i + 1, cnt);
+            // Backtrack by removing nums[i] from the current subset
+            cnt[nums[i]]--;
         }
+
         return count;
-    }
-
-    private boolean isValid(List<Integer> curr, int k, int num) {
-        for (int x : curr) {
-            if (Math.abs(x - num) == k) {
-                return false;
-            }
-        }
-        return true;
     }
 
 }
