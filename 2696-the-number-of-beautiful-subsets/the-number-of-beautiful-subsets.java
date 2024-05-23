@@ -5,22 +5,20 @@ class Solution {
     }
 
     int subsetRec(int[] arr, int start,int k, List<Integer> curr ){
-        if(!isValid(curr, k))
-            return 0;
         int count = 1;
         for(int i = start; i < arr.length; i++){
-            curr.add(arr[i]);
-            count += subsetRec(arr, i+1,k, curr);
-            curr.remove(curr.size()-1);
+            if(isValid(curr, k, arr[i])){
+                curr.add(arr[i]);
+                count += subsetRec(arr, i+1,k, curr);
+                curr.remove(curr.size()-1);
+            }
         }
         return count;
     }
 
-    boolean isValid(List<Integer> curr, int k){
-        Set<Integer> set = new HashSet<>(curr);
-
-        for(int num: curr){
-            if(set.contains(num-k)|| set.contains(num+k))
+    boolean isValid(List<Integer> curr, int k, int num){
+        for(int x : curr){
+            if(Math.abs(num-x)==k)
                 return false;
         }
         return true;
