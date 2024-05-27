@@ -11,16 +11,15 @@ class Solution {
             Character high = s.charAt(end);
             if(!Character.isLetterOrDigit(low)){
                 start++;
-                continue;
             }
-            if(!Character.isLetterOrDigit(high)){
+            else if(!Character.isLetterOrDigit(high)){
                 end--;
-                continue;
             }
-            if(Character.toLowerCase(low) != Character.toLowerCase(high))
-                return false;
             else{
-                start++; end--;
+                if(Character.toLowerCase(low) != Character.toLowerCase(high))
+                    return false;
+                start++; 
+                end--;
             }
         }
         return true;
