@@ -3,9 +3,7 @@ class Solution {
         Stack<Integer> stack = new Stack<>();
         for(String op: tokens){
             if(op.equals("+")){
-                int a = stack.pop();
-                int b = stack.pop();
-                stack.push(a+b);
+                stack.push(stack.pop() + stack.pop());
             }
             else if(op.equals("-")){
                 int a = stack.pop();
@@ -13,9 +11,7 @@ class Solution {
                 stack.push(b-a);
             }
             else if(op.equals("*")){
-                int a = stack.pop();
-                int b = stack.pop();
-                stack.push(a*b);
+                stack.push(stack.pop() * stack.pop());
             }
             else if(op.equals("/")){
                 int a = stack.pop();
