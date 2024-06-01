@@ -3,7 +3,6 @@ class Solution {
         int start = 0;
         int end = numbers.length -1;
         int[] result = {-1,-1};
-        //two pointer approach
         while(start < end){
             int sum = numbers[start] + numbers[end];
             if(sum == target){
