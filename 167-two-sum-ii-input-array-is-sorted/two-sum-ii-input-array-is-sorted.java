@@ -8,7 +8,7 @@ class Solution {
             if(sum == target){
                 result[0] = start+1;
                 result[1] = end+1;
-                break;
+                return result;
             }
             else if(sum < target)
                 start++;
