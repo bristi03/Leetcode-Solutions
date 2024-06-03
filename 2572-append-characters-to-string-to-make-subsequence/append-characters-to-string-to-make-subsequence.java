@@ -4,11 +4,9 @@ class Solution {
         int tp=0;
         while(sp < s.length() && tp < t.length()){
             if(s.charAt(sp) == t.charAt(tp)){
-                sp++;
                 tp++;
             }
-            else
-                sp++;
+            sp++;
         }
         return t.length() - tp;
     }
