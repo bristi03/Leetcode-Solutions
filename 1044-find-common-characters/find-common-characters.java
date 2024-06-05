@@ -17,7 +17,7 @@ class Solution {
         int i=0;
         while(i < 26){
             if(common[i] > 0){
-                res.add(String.valueOf((char) (i + 'a')));
+                res.add(""+(char)(i + 'a'));
                 common[i]--;
             }
             if(common[i] == 0)
