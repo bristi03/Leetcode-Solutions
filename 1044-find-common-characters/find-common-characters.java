@@ -14,14 +14,13 @@ class Solution {
         }
 
         List<String> res = new ArrayList<>();
-        int i=0;
-        while(i < 26){
+        for(int i=0; i<26; i++){
             if(common[i] > 0){
-                res.add(""+(char)(i + 'a'));
-                common[i]--;
+                while(common[i] > 0){
+                    res.add(""+ (char)(i + 'a'));
+                    common[i]--;
+                }
             }
-            if(common[i] == 0)
-                i++;
         }
         return res;
     }
