@@ -3,12 +3,9 @@ class Solution {
         Set<String> set = new HashSet<>(dictionary);
         String[] words = sentence.split(" ");
         for(int i=0; i<words.length; i++){
-            String word = words[i];
-            for(int j = 1; j< word.length(); j++){
-                String prefix = word.substring(0,j);
-                if(set.contains(prefix)){
+            for(String prefix : set){
+                if(words[i].length() >= prefix.length() && words[i].startsWith(prefix)){
                     words[i] = prefix;
-                    break;
                 }
             }
         }
