@@ -1,25 +1,34 @@
-class Solution {
+import java.util.Arrays;
+import java.util.HashMap;
+
+public class Solution {
     public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        // Map to store the count of each number in arr1
         HashMap<Integer, Integer> map = new HashMap<>();
-        for(int num:arr2){
-            map.put(num,0);
+
+        // Count occurrences of each element in arr1
+        for (int num : arr1) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
-        for(int num:arr1){
-            map.put(num, map.getOrDefault(num,0)+1);
-        }
-        int k=0;
-        for(int i=0; i<arr2.length; i++){
-            while(map.get(arr2[i])>0){
-                arr1[k++] = arr2[i];
-                map.put(arr2[i],map.get(arr2[i])-1);
+
+        // Sort arr1 based on the order defined in arr2
+        int index = 0;
+        for (int num : arr2) {
+            int count = map.get(num);
+            while (count > 0) {
+                arr1[index++] = num;
+                count--;
             }
-            map.remove(arr2[i]);
+            map.remove(num);
         }
-        int start = k;
-        for(int num:map.keySet()){
-            while(map.get(num)>0){
-                arr1[k++] = num;
-                map.put(num, map.get(num)-1);
+
+        // Sort the remaining elements not in arr2
+        int start = index;
+        for (int num : map.keySet()) {
+            int count = map.get(num);
+            while (count > 0) {
+                arr1[index++] = num;
+                count--;
             }
         }
         Arrays.sort(arr1, start, arr1.length);
