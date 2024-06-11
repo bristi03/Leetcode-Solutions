@@ -1,6 +1,3 @@
-import java.util.Arrays;
-import java.util.HashMap;
-
 public class Solution {
     public int[] relativeSortArray(int[] arr1, int[] arr2) {
         // Map to store the count of each number in arr1
