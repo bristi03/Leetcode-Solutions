@@ -8,8 +8,9 @@ class Solution {
         int index = 0;
         for(int i=0; i<3; i++){
             int count = freq[i];
-            while(count-- > 0){
+            while(count > 0){
                 nums[index++] = i;
+                count--;
             }
         }
     }
