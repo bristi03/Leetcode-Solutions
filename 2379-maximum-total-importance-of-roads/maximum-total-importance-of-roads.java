@@ -1,19 +1,16 @@
 class Solution {
     public long maximumImportance(int n, int[][] roads) {
-        int[] city = new int[n];
+        int[] freq = new int[n];
         for(int[] road : roads){
-            city[road[0]]++;
-            city[road[1]]++;
+            freq[road[0]]++;
+            freq[road[1]]++;
         }
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
-        for(int freq: city){
-            maxHeap.add(freq);
-        }
-
+        Arrays.sort(freq);
+        //System.out.println(Arrays.toString(freq));
         long total = 0;
-        int imp = n;
-        while(!maxHeap.isEmpty()){
-            total += (long) maxHeap.poll() * (imp--);
+        int imp=1;
+        for(int i=0; i<n; i++){
+            total += (long) freq[i]*(imp++);
         }
         return total;
     }
