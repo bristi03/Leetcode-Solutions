@@ -20,11 +20,6 @@ class Solution {
             dfs(i, i, ans, graph, visited);
         }
         
-        // Sort the ancestor lists for each node
-        for (List<Integer> list : ans) {
-            Collections.sort(list);
-        }
-        
         return ans;
     }
     
