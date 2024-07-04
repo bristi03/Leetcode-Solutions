@@ -14,11 +14,11 @@ class Solution {
         ListNode current = head.next; //pointer for traversing
         while(current != null){
             if(current.val != 0){
-                node.val += current.val;
+                node.val += current.val; //merging values of nodes
             }
             else{
                 if(current.next != null){
-                    node.next = current;
+                    node.next = current; //updating the modifying pointer to the next to be merged node
                     node = current;
                 }
                 else{
