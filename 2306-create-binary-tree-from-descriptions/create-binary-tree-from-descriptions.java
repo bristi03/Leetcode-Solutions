@@ -15,13 +15,13 @@
  */
 class Solution {
     public TreeNode createBinaryTree(int[][] descriptions) {
-        Map<Integer, TreeNode> map = new HashMap<>();
-        Set<Integer> children = new HashSet<>();
+        Map<Integer, TreeNode> map = new HashMap<>(); //stores all val-node pair
+        Set<Integer> children = new HashSet<>(); // stores all children
         for(int[] desc: descriptions){
             int parent = desc[0];
             int child = desc[1];
             int isLeft = desc[2];
-            children.add(child); //for identifying root
+            children.add(child); //for identifying root, which has no parent, i.e. wont be present in the children set
             TreeNode node;
             if(map.containsKey(parent)){
                 node = map.get(parent);
