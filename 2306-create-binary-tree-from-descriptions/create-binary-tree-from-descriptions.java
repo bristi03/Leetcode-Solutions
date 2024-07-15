@@ -22,6 +22,8 @@ class Solution {
             int child = desc[1];
             int isLeft = desc[2];
             children.add(child); //for identifying root, which has no parent, i.e. wont be present in the children set
+
+            // Get or create the parent node
             TreeNode node;
             if(map.containsKey(parent)){
                 node = map.get(parent);
@@ -30,6 +32,8 @@ class Solution {
                 node = new TreeNode(parent);
                 map.put(parent, node);
             }
+
+            // Get or create the child node
             TreeNode childNode;
             if(map.containsKey(child)){
                 childNode = map.get(child);
@@ -38,6 +42,8 @@ class Solution {
                 childNode = new TreeNode(child);
                 map.put(child, childNode);
             }
+
+            // Set the child node as the left or right child of the parent node
             if(isLeft == 1){
                 node.left = childNode;
             }
@@ -45,6 +51,8 @@ class Solution {
                 node.right = childNode;
             }
         }
+
+        // Identify the root node (the one which is not a child of any node)
         TreeNode root = null;
         for(int[] desc: descriptions){
             int parent = desc[0];
