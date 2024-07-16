@@ -15,12 +15,16 @@
  */
 class Solution {
     public String getDirections(TreeNode root, int startValue, int destValue) {
+        // Find the LCA of the start and destination nodes
         TreeNode lca = findLCA(root, startValue, destValue);
+
+        // Generate paths from the start node and destination node to the LCA
         StringBuilder pathToStart = new StringBuilder();
         StringBuilder pathToDest = new StringBuilder();
         findPath(lca, startValue, pathToStart);
         findPath(lca, destValue, pathToDest);
 
+        // Convert the path to start node to 'U' steps
         for(int i=0; i<pathToStart.length(); i++){
             pathToStart.setCharAt(i, 'U');
         }
