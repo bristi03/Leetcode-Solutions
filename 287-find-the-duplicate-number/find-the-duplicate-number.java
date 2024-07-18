@@ -1,17 +1,24 @@
 class Solution {
-    public int findDuplicate(int[] nums) {
-        int slow = nums[0];
-        int fast = nums[0];
-        do{
-            slow = nums[slow];
-            fast = nums[nums[fast]];
-        }while(slow!=fast);
-
-        fast = nums[0];
-        while(slow!=fast){
-            slow = nums[slow];
-            fast = nums[fast];
+    public int findDuplicate(int[] arr) {
+        //cyclic sort
+       int i = 0;
+        while (i < arr.length){
+            int correct = arr[i] - 1;
+            if(arr[i] != arr[correct]){
+                swap(arr,i,correct);
+            }
+            else if(i != correct)
+                return arr[i];
+            else
+                i++;
         }
-        return slow;
+        //this wont execute
+        return -1;
+    }
+
+    void swap(int[] arr, int i, int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
