@@ -18,7 +18,7 @@ class Solution {
         // result[0] will hold the count of good leaf node pairs
         int[] result = new int[1];
         dfs(root, distance, result);
-        return result[0]; // divide by 2 to account for double-counting pairs
+        return result[0];
     }
 
     private int[] dfs(TreeNode node, int distance, int[] result) {
