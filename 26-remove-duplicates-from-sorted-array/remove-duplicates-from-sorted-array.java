@@ -1,11 +1,12 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-        int index=0;
-        for(int i=1; i<nums.length; i++){
-            if(nums[index] != nums[i]){
-                nums[++index] = nums[i];
+        Set<Integer> set = new HashSet<>();
+        int index = 0;
+        for(int num: nums){
+            if(set.add(num)){
+                nums[index++] = num;
             }
         }
-        return index+1;
+        return index;
     }
 }
