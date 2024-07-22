@@ -1,20 +1,27 @@
 class Solution {
+    static class Person{
+        String name;
+        int height;
+
+        Person(String name, int height){
+            this.name = name;
+            this.height = height;
+        }
+    }
     public String[] sortPeople(String[] names, int[] heights) {
-        HashMap<Integer, String> map = new HashMap<>();
         int n= names.length;
-        for(int i=0; i<n; i++){
-            map.put(heights[i], names[i]);
-        }
-        Arrays.sort(heights);
+        List<Person> people = new ArrayList<>();
 
-        for(int i=0; i<n/2; i++){
-            int temp = heights[i];
-            heights[i] = heights[n-1-i];
-            heights[n-1-i] = temp;
+        for(int i=0; i< n; i++){
+            people.add(new Person(names[i], heights[i]));
         }
 
-        for(int i=0; i<n; i++){
-            names[i] = map.get(heights[i]);
+        //sort people in desc order of heights
+        Collections.sort(people, (a,b)-> b.height - a.height);
+
+        int i=0;
+        for(Person person: people){
+            names[i++] = person.name;
         }
 
         return names;
