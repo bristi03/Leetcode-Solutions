@@ -12,7 +12,7 @@ class Solution {
             return;
         }
         if (target < 0 || index == arr.length) {
-             return;
+            return;
         }
         ds.add(arr[index]);
         subsetRec(arr, target-arr[index], index + 1, ds, res);
