@@ -10,7 +10,7 @@ class Solution {
             for(char digit: num.toCharArray()){
                 sum += digit - '0';
             }
-            num = Integer.toString(sum);
+            num = String.valueOf(sum);
             k--;
         }
         return Integer.parseInt(num);
