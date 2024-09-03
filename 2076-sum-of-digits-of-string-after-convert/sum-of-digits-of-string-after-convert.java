@@ -13,6 +13,6 @@ class Solution {
             num = String.valueOf(sum);
             k--;
         }
-        return Integer.parseInt(num);
+        return Integer.valueOf(num);
     }
 }
