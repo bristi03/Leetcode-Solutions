@@ -20,8 +20,6 @@ class Solution {
             return;
         board[row][col] = '-';
         dfs(board, row+1, col);
-        dfs(board, row-1, col);
         dfs(board, row, col+1);
-        dfs(board, row, col-1);
     }
 }
